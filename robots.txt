@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://modocerca.cl/sitemap.xml
