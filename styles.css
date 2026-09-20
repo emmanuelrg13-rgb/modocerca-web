@@ -121,3 +121,106 @@ footer{padding:34px 0;border-top:1px solid var(--line);background:#fff}
 .digital-card-footer a{color:#087c73;font-weight:800}
 .digital-card-note{width:min(100%,620px);color:#d6e6e9;text-align:center;font-size:.8rem;line-height:1.5;margin:14px auto 0}
 @media(max-width:560px){.digital-card{padding:24px;border-radius:26px}.digital-card-top{align-items:flex-start}.digital-card-logo img{width:205px}.digital-card-badge{font-size:.7rem}.digital-card-actions{grid-template-columns:1fr}.digital-card-actions .btn-wide{grid-column:auto}.digital-card-contact a{align-items:flex-start;flex-direction:column;gap:1px}.digital-card-contact strong{text-align:left}.digital-card-identity{padding-top:28px}}
+
+/* ==========================================================
+   PREVIEW V4 — Modo oscuro seleccionable
+   Activado mediante <html data-theme="dark">.
+   ========================================================== */
+.theme-toggle{
+  display:inline-flex;align-items:center;justify-content:center;gap:8px;
+  min-width:42px;min-height:42px;padding:9px 12px;border-radius:999px;
+  border:1px solid rgba(15,45,61,.16);background:#fff;color:var(--navy);
+  font:inherit;font-size:.88rem;font-weight:780;cursor:pointer;transition:.2s ease;
+}
+.theme-toggle:hover{border-color:var(--teal);transform:translateY(-1px)}
+.theme-toggle-icon{font-size:1rem;line-height:1}
+.nav-actions{display:flex;align-items:center;gap:9px}
+.digital-card-controls{display:flex;align-items:center;gap:8px;flex-wrap:wrap;justify-content:flex-end}
+.theme-toggle.floating-theme{position:fixed;right:18px;top:18px;z-index:80;box-shadow:var(--shadow)}
+
+html[data-theme="dark"]{color-scheme:dark}
+html[data-theme="dark"] body{background:#081A24;color:#E8F1F3}
+html[data-theme="dark"] .site-header{background:rgba(8,26,36,.94);border-bottom-color:rgba(120,190,196,.16)}
+html[data-theme="dark"] .brand{background:#F7F9FB;border:1px solid rgba(255,255,255,.12);border-radius:14px;padding:4px 8px;box-shadow:0 8px 26px rgba(0,0,0,.12)}
+html[data-theme="dark"] .nav-links{color:#D8E8EB}
+html[data-theme="dark"] .menu-btn{color:#E8F1F3}
+html[data-theme="dark"] .theme-toggle{background:#102E3A;border-color:#2B5360;color:#EAF5F6}
+html[data-theme="dark"] .theme-toggle:hover{border-color:var(--teal);color:#7BE9DF}
+html[data-theme="dark"] .btn-secondary{background:#102E3A;border-color:#2B5360;color:#EAF5F6}
+html[data-theme="dark"] .btn-secondary:hover{border-color:var(--teal);color:#7BE9DF}
+
+html[data-theme="dark"] .hero{
+  background:radial-gradient(circle at 87% 15%,rgba(0,180,166,.19),transparent 28%),
+             linear-gradient(135deg,#081A24 0%,#0B222D 54%,#0E3039 100%);
+}
+html[data-theme="dark"] .hero:after{border-color:rgba(0,180,166,.10)}
+html[data-theme="dark"] .hero h1,
+html[data-theme="dark"] .section-head h2,
+html[data-theme="dark"] .card h3,
+html[data-theme="dark"] .value b,
+html[data-theme="dark"] .price-row b,
+html[data-theme="dark"] label,
+html[data-theme="dark"] .footer-brand{color:#F1F7F8}
+html[data-theme="dark"] .hero p{color:#B6C9CF}
+html[data-theme="dark"] .hero-note{color:#91AAB2}
+html[data-theme="dark"] .eyebrow{color:#6FE1D7;background:#103A3D;border-color:#1D5657}
+html[data-theme="dark"] .hero-card{background:linear-gradient(160deg,#123E4B,#0B2A36);box-shadow:0 20px 60px rgba(0,0,0,.30)}
+html[data-theme="dark"] .hero-card h2{color:#F6FAFA}
+html[data-theme="dark"] .quick-item{border-bottom-color:rgba(255,255,255,.10)}
+
+html[data-theme="dark"] .section.alt{background:#0B222D}
+html[data-theme="dark"] .section-head p,
+html[data-theme="dark"] .card p,
+html[data-theme="dark"] .value span,
+html[data-theme="dark"] .price-row small,
+html[data-theme="dark"] .pricing-note,
+html[data-theme="dark"] .form-help{color:#A6BBC2}
+html[data-theme="dark"] .card,
+html[data-theme="dark"] .value,
+html[data-theme="dark"] .price-row,
+html[data-theme="dark"] .contact-form{background:#0E2A36;border-color:#234854;box-shadow:0 10px 32px rgba(0,0,0,.10)}
+html[data-theme="dark"] .card-icon{background:#123642;color:#58DDD1}
+html[data-theme="dark"] .philosophy-panel{background:linear-gradient(160deg,#123B49,#0E303D)}
+html[data-theme="dark"] .philosophy-panel p{color:#D4E4E7}
+html[data-theme="dark"] .price{color:#5FE2D7}
+html[data-theme="dark"] .contact-info{background:linear-gradient(160deg,#0C2A36,#124554)}
+html[data-theme="dark"] input,
+html[data-theme="dark"] select,
+html[data-theme="dark"] textarea{background:#0A222C;border-color:#31535D;color:#EDF6F7}
+html[data-theme="dark"] input::placeholder,
+html[data-theme="dark"] textarea::placeholder{color:#78939B}
+html[data-theme="dark"] footer{background:#0B222D;border-top-color:#234854}
+html[data-theme="dark"] .footer-grid{color:#91AAB2}
+html[data-theme="dark"] .skip:focus{background:#102E3A;color:#F1F7F8}
+
+/* Tarjeta digital en oscuro */
+html[data-theme="dark"] .digital-card-page{
+  background:radial-gradient(circle at 78% 8%,rgba(0,180,166,.18),transparent 26%),
+             linear-gradient(145deg,#06161E,#0A202B 58%,#0E3340);
+}
+html[data-theme="dark"] .digital-card{background:rgba(10,34,44,.985);border-color:#2B505A;box-shadow:0 26px 80px rgba(0,0,0,.40)}
+html[data-theme="dark"] .digital-card-logo{background:#F7F9FB;border-radius:14px;padding:5px 8px}
+html[data-theme="dark"] .digital-card-badge{color:#71E3D8;background:#103A3D;border-color:#1D5657}
+html[data-theme="dark"] .digital-card-kicker{color:#65DDD2}
+html[data-theme="dark"] .digital-card-identity h1{color:#F1F7F8}
+html[data-theme="dark"] .digital-card-role{color:#C6D8DC}
+html[data-theme="dark"] .digital-card-intro{color:#A9BEC5}
+html[data-theme="dark"] .digital-card-services span{background:#113440;border-color:#28505A;color:#E8F1F3}
+html[data-theme="dark"] .share-status{background:#103A3D;border-color:#1D5657;color:#71E3D8}
+html[data-theme="dark"] .digital-card-contact,
+html[data-theme="dark"] .digital-card-footer{border-top-color:#28505A}
+html[data-theme="dark"] .digital-card-contact span{color:#8FA8AF}
+html[data-theme="dark"] .digital-card-contact strong{color:#EAF4F5}
+html[data-theme="dark"] .digital-card-footer a{color:#6FE1D7}
+html[data-theme="dark"] .digital-card-note{color:#9FB6BC}
+
+@media (max-width:720px){
+  .theme-toggle-label{display:none}
+  .theme-toggle{min-width:42px;padding:9px}
+  html[data-theme="dark"] .nav-links{background:#0E2A36;border-color:#234854}
+  html[data-theme="dark"] .brand{border-radius:12px;padding:3px 6px}
+}
+@media(max-width:560px){
+  .digital-card-controls{gap:6px}
+  .digital-card-controls .theme-toggle{min-width:38px;min-height:38px}
+}

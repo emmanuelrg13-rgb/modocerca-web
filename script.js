@@ -100,3 +100,35 @@ document.querySelectorAll('[data-copy-card]').forEach(button => {
     }
   });
 });
+
+// Modo claro / oscuro manual, persistente en este navegador.
+const themeStorageKey = 'modocerca-theme';
+
+function currentTheme() {
+  return document.documentElement.dataset.theme === 'dark' ? 'dark' : 'light';
+}
+
+function updateThemeControls() {
+  const isDark = currentTheme() === 'dark';
+  document.querySelectorAll('[data-theme-toggle]').forEach(button => {
+    button.setAttribute('aria-pressed', String(isDark));
+    button.setAttribute('aria-label', isDark ? 'Cambiar a modo claro' : 'Cambiar a modo oscuro');
+    const icon = button.querySelector('.theme-toggle-icon');
+    const label = button.querySelector('.theme-toggle-label');
+    if (icon) icon.textContent = isDark ? '☀' : '☾';
+    if (label) label.textContent = isDark ? 'Claro' : 'Oscuro';
+  });
+}
+
+function applyTheme(theme) {
+  document.documentElement.dataset.theme = theme;
+  try { localStorage.setItem(themeStorageKey, theme); } catch (_) {}
+  const meta = document.querySelector('meta[name="theme-color"]');
+  if (meta) meta.setAttribute('content', theme === 'dark' ? '#081A24' : '#0F2D3D');
+  updateThemeControls();
+}
+
+document.querySelectorAll('[data-theme-toggle]').forEach(button => {
+  button.addEventListener('click', () => applyTheme(currentTheme() === 'dark' ? 'light' : 'dark'));
+});
+updateThemeControls();
