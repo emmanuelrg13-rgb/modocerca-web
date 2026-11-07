@@ -1,8 +1,25 @@
 const menuBtn = document.querySelector('.menu-btn');
 const navLinks = document.querySelector('.nav-links');
 if (menuBtn && navLinks) {
-  menuBtn.addEventListener('click', () => navLinks.classList.toggle('open'));
-  navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', () => navLinks.classList.remove('open')));
+  function setMenuOpen(open) {
+    navLinks.classList.toggle('open', open);
+    menuBtn.setAttribute('aria-expanded', String(open));
+    menuBtn.setAttribute('aria-label', open ? 'Cerrar menú' : 'Abrir menú');
+    menuBtn.textContent = open ? '×' : '☰';
+  }
+  menuBtn.addEventListener('click', () => setMenuOpen(!navLinks.classList.contains('open')));
+  navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', () => setMenuOpen(false)));
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Escape' && navLinks.classList.contains('open')) {
+      setMenuOpen(false);
+      menuBtn.focus();
+    }
+  });
+  document.addEventListener('click', e => {
+    if (navLinks.classList.contains('open') && !navLinks.contains(e.target) && !menuBtn.contains(e.target)) {
+      setMenuOpen(false);
+    }
+  });
 }
 
 document.querySelectorAll('[data-year]').forEach(el => el.textContent = new Date().getFullYear());
@@ -25,7 +42,8 @@ const refMap = {
 function applyReferralFromUrl() {
   const ref = new URLSearchParams(window.location.search).get('ref');
   if (!ref) return;
-  const mapped = refMap[ref.toLowerCase()];
+  const normalized = ref.toLowerCase();
+  const mapped = refMap[normalized] || (normalized.startsWith('web-') ? 'Web' : null);
   if (!mapped) return;
 
   document.querySelectorAll('[data-origin-select]').forEach(select => {
@@ -35,6 +53,35 @@ function applyReferralFromUrl() {
 }
 
 applyReferralFromUrl();
+
+// La selección viene de una opción existente: no se inyecta HTML de la URL.
+function applyServiceFromUrl() {
+  const params = new URLSearchParams(window.location.search);
+  const selectedService = params.get('servicio');
+  const intro = params.get('mensaje');
+  if (selectedService) {
+    document.querySelectorAll('.quote-form select[name="servicio"]').forEach(select => {
+      const matching = [...select.options].find(option => option.value === selectedService || option.text === selectedService);
+      if (matching) select.value = matching.value;
+    });
+  }
+  if (intro && intro.length <= 280) {
+    document.querySelectorAll('.quote-form textarea[name="mensaje"]').forEach(textarea => {
+      if (!textarea.value) textarea.value = intro;
+    });
+  }
+}
+applyServiceFromUrl();
+
+// Solo en la portada, el contacto es por definición originado desde la web.
+if (window.location.pathname === '/' || window.location.pathname.endsWith('/index.html')) {
+  document.querySelectorAll('[data-origin-select]').forEach(select => {
+    if (!new URLSearchParams(window.location.search).has('ref') && !select.value) {
+      select.value = 'Web';
+    }
+  });
+}
+
 
 function buildWhatsAppMessage(form) {
   const data = new FormData(form);
@@ -100,35 +147,3 @@ document.querySelectorAll('[data-copy-card]').forEach(button => {
     }
   });
 });
-
-// Modo claro / oscuro manual, persistente en este navegador.
-const themeStorageKey = 'modocerca-theme';
-
-function currentTheme() {
-  return document.documentElement.dataset.theme === 'dark' ? 'dark' : 'light';
-}
-
-function updateThemeControls() {
-  const isDark = currentTheme() === 'dark';
-  document.querySelectorAll('[data-theme-toggle]').forEach(button => {
-    button.setAttribute('aria-pressed', String(isDark));
-    button.setAttribute('aria-label', isDark ? 'Cambiar a modo claro' : 'Cambiar a modo oscuro');
-    const icon = button.querySelector('.theme-toggle-icon');
-    const label = button.querySelector('.theme-toggle-label');
-    if (icon) icon.textContent = isDark ? '☀' : '☾';
-    if (label) label.textContent = isDark ? 'Claro' : 'Oscuro';
-  });
-}
-
-function applyTheme(theme) {
-  document.documentElement.dataset.theme = theme;
-  try { localStorage.setItem(themeStorageKey, theme); } catch (_) {}
-  const meta = document.querySelector('meta[name="theme-color"]');
-  if (meta) meta.setAttribute('content', theme === 'dark' ? '#081A24' : '#0F2D3D');
-  updateThemeControls();
-}
-
-document.querySelectorAll('[data-theme-toggle]').forEach(button => {
-  button.addEventListener('click', () => applyTheme(currentTheme() === 'dark' ? 'light' : 'dark'));
-});
-updateThemeControls();
