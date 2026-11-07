@@ -38,3 +38,18 @@
 6. Solo con esas comprobaciones aprobadas: fusionar a producción y verificar enlaces y rutas públicas. **No tocar DNS, MX, SPF, DKIM ni Google Workspace.**
 
 Los archivos `README_PUBLICAR_V4.md` y `README_DESPLIEGUE.md` están conservados como referencia histórica de la entrega original. Esta guía V4.1 prevalece para los nuevos cambios.
+
+
+---
+
+## Actualización V4.2 — Modo oscuro (07/11/2026)
+
+- Se incorpora un interruptor claro/oscuro visible en la portada y en `/contacto`, `/tarjeta`, además de la página 404.
+- Primera visita: sigue la configuración del sistema operativo; luego guarda la elección en `localStorage` (`modocerca-theme`) y la comparte entre páginas en el mismo dominio y navegador.
+- Se utiliza una variante de contraste del SVG original para que el logotipo sea legible sobre fondo oscuro. Geometría, denominación e identidad originales sin cambios.
+- El modo oscuro incluye formularios, precios agrupados, zonas de vitrinismo, tarjetas de servicio, navegación móvil y tarjeta digital.
+- No se modificaron precios, formularios comerciales, referencias, WhatsApp, vCard, encabezados de seguridad ni DNS.
+- Archivos nuevos: `theme.js` y `assets/logo-oscuro.svg` (además de HTML y CSS actualizados).
+- Después de subir el sitio, haz una recarga completa o borra la caché si sigues viendo la apariencia anterior.
+
+**Pruebas de aceptación**: alternar tema en portada; navegar a Contacto y Tarjeta comprobando continuidad; recargar y comprobar persistencia; probar en móvil (incluido el menú); enviar una consulta de prueba sin llegar a enviarla por WhatsApp; validar accesibilidad de textos y formularios.

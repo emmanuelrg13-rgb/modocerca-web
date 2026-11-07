@@ -160,7 +160,7 @@ footer{padding:34px 0;border-top:1px solid var(--line);background:#fff}
 .price-help p{margin:7px 0 16px;color:#4e6368;max-width:730px}
 #servicios,#pasos,#precios,#modo,#contacto{scroll-margin-top:90px}
 :where(a,button,input,select,textarea):focus-visible{outline:3px solid #007b73;outline-offset:3px}
-@media(max-width:1050px){
+@media(max-width:1180px){
  .nav-links{display:none;position:absolute;left:18px;right:18px;top:70px;background:#fff;border:1px solid var(--line);border-radius:18px;padding:16px;box-shadow:var(--shadow);flex-direction:column;align-items:stretch;gap:6px}
  .nav-links.open{display:flex}
  .nav-links a:not(.btn){padding:7px 9px}
@@ -187,3 +187,87 @@ footer{padding:34px 0;border-top:1px solid var(--line);background:#fff}
  .price-help{padding:21px}
  .brand img{width:min(190px,62vw)}
 }
+
+
+/* ModoCerca V4.2 — Tema oscuro accesible, sin cambiar la identidad visual ni los recorridos. */
+.brand-logo-dark{display:none!important}
+:root[data-theme="dark"] .brand-logo-light{display:none!important}
+:root[data-theme="dark"] .brand-logo-dark{display:block!important}
+.nav-tools{display:flex;align-items:center;gap:10px;margin-left:auto;flex-shrink:0}
+.theme-toggle{display:inline-flex;align-items:center;justify-content:center;gap:7px;min-height:44px;padding:9px 13px;border:1px solid var(--line);border-radius:999px;color:var(--navy);background:#fff;font:inherit;font-size:.87rem;font-weight:750;white-space:nowrap;cursor:pointer;transition:background .18s ease,border-color .18s ease,color .18s ease}
+.theme-toggle:hover{border-color:var(--teal);background:#e9f7f5}
+.theme-toggle-icon{font-size:1.15rem;line-height:1;min-width:18px;text-align:center}
+.digital-card-top-actions{display:flex;align-items:center;gap:9px;flex-wrap:wrap;justify-content:flex-end}
+.digital-card-top-actions .theme-toggle{min-width:44px}
+@media(max-width:1180px){.nav-tools .menu-btn{display:block}}
+@media(max-width:720px){
+ .nav{gap:12px}
+ .theme-toggle{width:44px;min-width:44px;height:44px;padding:8px}
+ .theme-toggle-label{display:none}
+ .nav-tools{gap:8px}
+ .nav-return{padding:10px 12px;font-size:.9rem}
+ .nav .brand img{width:min(175px,47vw)}
+}
+@media(max-width:560px){
+ .digital-card-top{flex-wrap:wrap;gap:12px}
+ .digital-card-top .digital-card-logo img{width:min(205px,55vw)}
+ .digital-card-top-actions{gap:7px}
+ .digital-card-top-actions .theme-toggle{width:40px;min-width:40px;height:40px}
+}
+@media(prefers-reduced-motion:reduce){.theme-toggle{transition:none}}
+
+:root[data-theme="dark"]{
+ color-scheme:dark;
+ --white:#0C1B26;
+ --graphite:#E4EEF3;
+ --muted:#B4C6D0;
+ --line:#314957;
+ --soft:#183845;
+ --shadow:0 18px 50px rgba(0,0,0,.35);
+ --dark-panel:#132B38;
+ --dark-panel-2:#193744;
+ --dark-heading:#F3FAFC;
+ --dark-accent:#67E8DC;
+}
+:root[data-theme="dark"] .site-header{background:rgba(12,27,38,.95);border-bottom:1px solid #304755}
+:root[data-theme="dark"] .nav-links,:root[data-theme="dark"] .menu-btn{color:var(--dark-heading)}
+:root[data-theme="dark"] .nav-links a:hover{color:var(--dark-accent)}
+:root[data-theme="dark"] .theme-toggle{background:#193442;border-color:#416171;color:var(--dark-heading)}
+:root[data-theme="dark"] .theme-toggle:hover{background:#234758;border-color:var(--dark-accent)}
+:root[data-theme="dark"] .btn-secondary{background:#1B3542;border-color:#406070;color:var(--dark-heading)}
+:root[data-theme="dark"] .btn-secondary:hover{border-color:var(--dark-accent);color:var(--dark-accent)}
+:root[data-theme="dark"] .hero{background:radial-gradient(circle at 87% 15%,rgba(0,180,166,.18),transparent 28%),linear-gradient(135deg,#0D202D 0%,#112A37 55%,#163D43 100%)}
+:root[data-theme="dark"] .hero:after{border-color:rgba(103,232,220,.06)}
+:root[data-theme="dark"] .eyebrow{background:#173F48;border-color:#2E777C;color:#9EF8EB}
+:root[data-theme="dark"] .hero h1,:root[data-theme="dark"] .section-head h2{color:var(--dark-heading)}
+:root[data-theme="dark"] .hero h1 span{color:var(--dark-accent)}
+:root[data-theme="dark"] .hero p{color:#BED2DC}
+:root[data-theme="dark"] .hero-note{color:var(--muted)}
+:root[data-theme="dark"] .section.alt{background:#102431}
+:root[data-theme="dark"] .card,:root[data-theme="dark"] .value,:root[data-theme="dark"] .price-row,:root[data-theme="dark"] .contact-form,:root[data-theme="dark"] .step{background:var(--dark-panel);border-color:var(--line);box-shadow:0 8px 26px rgba(0,0,0,.15)}
+:root[data-theme="dark"] .card h3,:root[data-theme="dark"] .value b,:root[data-theme="dark"] .price-row b,:root[data-theme="dark"] .step h3,:root[data-theme="dark"] .price-group-heading h3,:root[data-theme="dark"] .price-help strong{color:var(--dark-heading)}
+:root[data-theme="dark"] .card-icon{background:#204653;color:var(--dark-accent)}
+:root[data-theme="dark"] .price,:root[data-theme="dark"] .subtle-link,:root[data-theme="dark"] .service-type,:root[data-theme="dark"] .card-link,:root[data-theme="dark"] .step-number,:root[data-theme="dark"] .price-group-cta{color:var(--dark-accent)!important}
+:root[data-theme="dark"] .steps-section{background:#0D2330}
+:root[data-theme="dark"] .price-categories a{color:var(--dark-heading);background:#1B3946;border-color:var(--line)}
+:root[data-theme="dark"] .price-categories a:hover,:root[data-theme="dark"] .price-categories a:focus-visible{background:#234A56;border-color:var(--dark-accent)}
+:root[data-theme="dark"] .price-help{background:#173B41;border-color:#39777A}
+:root[data-theme="dark"] .price-help p{color:#C2D7DE}
+:root[data-theme="dark"] label{color:var(--dark-heading)}
+:root[data-theme="dark"] input,:root[data-theme="dark"] select,:root[data-theme="dark"] textarea{background:#0C222F;border-color:#486574;color:var(--dark-heading)}
+:root[data-theme="dark"] input::placeholder,:root[data-theme="dark"] textarea::placeholder{color:#A1B6C1}
+:root[data-theme="dark"] input:focus,:root[data-theme="dark"] select:focus,:root[data-theme="dark"] textarea:focus{border-color:var(--dark-accent);box-shadow:0 0 0 3px rgba(103,232,220,.18)}
+:root[data-theme="dark"] footer{background:#0C1B26;border-color:var(--line)}
+:root[data-theme="dark"] .footer-grid{color:var(--muted)}
+:root[data-theme="dark"] .footer-brand{color:var(--dark-heading)}
+:root[data-theme="dark"] .skip:focus{background:var(--dark-panel);color:var(--dark-heading)}
+:root[data-theme="dark"] .digital-card-page{background:radial-gradient(circle at 78% 8%,rgba(0,180,166,.14),transparent 28%),linear-gradient(145deg,#08141E,#0C1B26 58%,#102E39)}
+:root[data-theme="dark"] .digital-card{background:#142C39;border-color:#36515F}
+:root[data-theme="dark"] .digital-card-badge,:root[data-theme="dark"] .share-status{background:#1C4B4B;color:#9DF4E5;border-color:#337E7D}
+:root[data-theme="dark"] .digital-card-kicker,:root[data-theme="dark"] .digital-card-footer a{color:var(--dark-accent)}
+:root[data-theme="dark"] .digital-card-identity h1,:root[data-theme="dark"] .digital-card-contact strong{color:var(--dark-heading)}
+:root[data-theme="dark"] .digital-card-role{color:#C3D9E3}
+:root[data-theme="dark"] .digital-card-services span{background:#1B3A48;border-color:var(--line);color:var(--dark-heading)}
+:root[data-theme="dark"] .digital-card-note{color:#B7D1DD}
+:root[data-theme="dark"] :where(a,button,input,select,textarea):focus-visible{outline-color:#9DF4E5}
+@media(max-width:1180px){:root[data-theme="dark"] .nav-links{background:#142D3B;border-color:var(--line)}}
